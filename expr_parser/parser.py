@@ -162,9 +162,6 @@ class Parser(object):
             self.tokens = self.lex(source)
             self.advance()
             return self.expression(0)
-        except ParserError as e:
-            import sys
-            print >>sys.stderr, str(e)
         finally:
             self.tokens = iter(())
             self.token = None
