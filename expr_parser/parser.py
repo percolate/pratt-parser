@@ -136,10 +136,11 @@ class Parser(object):
             left = tok.led(left)
         return left
 
-    def advance(self, sid=None):
-        if sid and sid != self.token.id:
+    def advance(self, value=None):
+        tok = self.token
+        if value and value not in (tok.value, tok.id):
             raise ParserError(
-                "Expected `%s'; got `%s' instead" % (sid, self.token.id))
+                "Expected `%s'; got `%s' instead" % (value, tok.value))
         try:
             tok = self.tokens.next()
             symbol_table = self.symbol_table
