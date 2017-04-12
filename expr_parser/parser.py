@@ -140,7 +140,7 @@ class Parser(object):
         tok = self.token
         if value and value not in (tok.value, tok.id):
             raise ParserError(
-                "Expected `%s'; got `%s' instead" % (value, self.token.value))
+                "Expected `%s'; got `%s' instead" % (value, tok.value))
         try:
             tok = self.tokens.next()
             symbol_table = self.symbol_table
